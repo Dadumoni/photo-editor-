@@ -10,8 +10,14 @@ services:
     ports:
       - port: 8000
         protocol: http
+    scaling:
+      minInstances: 1 # Ensure at least one instance always runs
     envVars:
       - key: TELEGRAM_BOT_TOKEN
         value: "$TELEGRAM_BOT_TOKEN"
       - key: PORT
-        value: "8000" 
+        value: "8000"
+      - key: PUBLIC_URL
+        value: "https://${service.name}.${parent.domains.0.name}" # Automatically use the generated Koyeb URL
+      - key: KOYEB_APP_NAME
+        value: "photo-editor-bot" 

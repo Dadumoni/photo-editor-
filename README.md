@@ -28,7 +28,14 @@ A Telegram bot that processes photos by adding text overlays, converting to 16:9
    - Value: Your bot token from BotFather
 5. Deploy the app
 
-The deployment includes a simple HTTP server that responds to health checks on port 8000, which is required by Koyeb to verify that your service is running properly.
+The deployment includes:
+- A simple HTTP server that responds to health checks on port 8000, required by Koyeb
+- A keep-alive mechanism that prevents the service from sleeping on free plans
+- Minimum instance scaling configuration to ensure the bot stays running
+
+### Preventing Sleep Mode
+
+The bot includes a self-pinging mechanism that sends requests to itself every 5 minutes to prevent Koyeb from putting the service to sleep on free tier accounts. This ensures your bot remains responsive at all times.
 
 ### Manual Deployment
 

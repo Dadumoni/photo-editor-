@@ -162,17 +162,8 @@ def add_text_to_image(image):
     # Create a drawing object
     draw = ImageDraw.Draw(new_image)
     
-    # Adjust font size based on image dimensions
-    font_size = int(final_width * 0.045)
-    
-    # Set minimum and maximum font sizes to ensure text is neither too small nor too large
-    min_font_size = 24
-    max_font_size = 60
-    
-    if font_size < min_font_size:
-        font_size = min_font_size
-    elif font_size > max_font_size:
-        font_size = max_font_size
+    # Use fixed font size of 40 pixels
+    font_size = 40
     
     # Try different fonts - prioritizing regular fonts
     font_options = ["arial.ttf", "times.ttf", "calibri.ttf", "tahoma.ttf", "verdana.ttf", "georgia.ttf"]

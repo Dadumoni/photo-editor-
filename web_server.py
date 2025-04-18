@@ -28,19 +28,26 @@ def keep_alive():
     app_name = os.environ.get('KOYEB_APP_NAME', 'photo-editor-bot')
     
     # Wait for server to start
-    time.sleep(60)
+    time.sleep(30)
     
+    print(f"Starting keep-alive mechanism - pinging every 5 seconds")
+    
+    ping_count = 0
     while True:
         try:
             # Get the public URL from environment or use localhost for testing
             url = os.environ.get('PUBLIC_URL', f'http://localhost:8000')
             response = requests.get(url)
-            print(f"Keep-alive ping sent. Status: {response.status_code}")
+            
+            ping_count += 1
+            # Only log every 100 pings to reduce log noise
+            if ping_count % 100 == 0:
+                print(f"Keep-alive ping #{ping_count} sent. Status: {response.status_code}")
         except Exception as e:
             print(f"Keep-alive ping failed: {e}")
         
-        # Wait for 5 minutes before next ping
-        time.sleep(300)
+        # Wait for 5 seconds before next ping
+        time.sleep(5)
 
 if __name__ == '__main__':
     # Start the health check server in a separate thread

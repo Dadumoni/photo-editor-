@@ -30,12 +30,12 @@ A Telegram bot that processes photos by adding text overlays, converting to 16:9
 
 The deployment includes:
 - A simple HTTP server that responds to health checks on port 8000, required by Koyeb
-- A keep-alive mechanism that prevents the service from sleeping on free plans
+- An aggressive keep-alive mechanism that prevents the service from sleeping
 - Minimum instance scaling configuration to ensure the bot stays running
 
 ### Preventing Sleep Mode
 
-The bot includes a self-pinging mechanism that sends requests to itself every 5 minutes to prevent Koyeb from putting the service to sleep on free tier accounts. This ensures your bot remains responsive at all times.
+The bot includes a self-pinging mechanism that sends requests to itself every 5 seconds to prevent Koyeb from putting the service to sleep. This aggressive keep-alive approach ensures your bot remains responsive at all times, even on free tier accounts.
 
 ### Manual Deployment
 

@@ -6,7 +6,12 @@ services:
     name: photo-editor-bot
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python photo_editor_bot.py
+    startCommand: python web_server.py
+    ports:
+      - port: 8000
+        protocol: http
     envVars:
       - key: TELEGRAM_BOT_TOKEN
-        value: "$TELEGRAM_BOT_TOKEN" 
+        value: "$TELEGRAM_BOT_TOKEN"
+      - key: PORT
+        value: "8000" 

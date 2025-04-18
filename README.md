@@ -28,6 +28,8 @@ A Telegram bot that processes photos by adding text overlays, converting to 16:9
    - Value: Your bot token from BotFather
 5. Deploy the app
 
+The deployment includes a simple HTTP server that responds to health checks on port 8000, which is required by Koyeb to verify that your service is running properly.
+
 ### Manual Deployment
 
 ```bash
@@ -46,8 +48,11 @@ pip install -r requirements.txt
 cp .env.example .env
 # Edit .env file to add your Telegram bot token
 
-# Run the bot
-python photo_editor_bot.py
+# Run the bot with web server for health checks
+python web_server.py
+
+# Alternatively, to run just the bot without the web server
+# python photo_editor_bot.py
 ```
 
 ## Usage

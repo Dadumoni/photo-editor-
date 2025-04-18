@@ -1,1 +1,1 @@
-web: python photo_editor_bot.py 
+web: python web_server.py 

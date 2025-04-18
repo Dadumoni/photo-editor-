@@ -1,0 +1,1 @@
+web: python photo_editor_bot.py 

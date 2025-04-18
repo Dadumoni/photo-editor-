@@ -1,0 +1,12 @@
+name: photo-editor-bot
+regions:
+  - fra
+services:
+  - type: web
+    name: photo-editor-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python photo_editor_bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        value: "$TELEGRAM_BOT_TOKEN" 
